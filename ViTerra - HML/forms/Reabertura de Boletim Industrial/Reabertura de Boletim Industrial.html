@@ -1,0 +1,203 @@
+<html>
+<head>
+	<link rel="stylesheet" href="style.css">
+	<link type="text/css" rel="stylesheet" href="/style-guide/css/fluig-style-guide.min.css"/>
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
+	<script type="text/javascript" src="/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+</head>
+<body>
+<div class="fluig-style-guide">
+<form name="form" role="form">
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<div class="content col-md-12">
+				<input type="hidden" name="hd_nomeUser" id="hd_nomeUser" value="Marcelo">
+				<input type="hidden" name="hd_funcaoUser" id="hd_funcaoUser" value="Developer">
+				<input type="hidden" name="num_atividade" id="num_atividade">
+				<input type="hidden" name="login_user" id="login_user">
+				<input type="hidden" name="niveisAprovacao" id="niveisAprovacao">
+				<div class="panel panel-default" id="etapas-content" onload="etapas()">
+					<div class="panel-heading">
+						<div class="panel-title">
+							<img src="./img/EtapaIcon.svg" alt="Icone da seção de Etapas" width="26px" height="26px">
+							<h3 class="panel-title">Etapa da Solicitação</h3>
+						</div>
+					</div>
+					<div class="panel-body">
+						<div class="progress">
+							<div id="inicio" class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="33.3" aria-valuemin="0" aria-valuemax="100" style="width: 33.3%">
+								<span class="textProgressBar">Solicitação</span>
+							</div>
+							<div id="aprovacao" class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="33.3" aria-valuemin="0" aria-valuemax="100" style="width: 33.3%">
+								<span>Aprovação</span>
+							</div>
+							<div id="fim" class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="33.3" aria-valuemin="0" aria-valuemax="100" style="width: 33.3%">
+								<span>Confirmação de Abertura de Boletim</span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="panel panel-default" id="solicitante-content">
+					<div class="panel-heading" id="solic-heading">
+						<div class="panel-title">
+							<img src="img/DadosIcon.svg" alt="Icone da seção de Etapas" width="26px" height="26px">
+							<h3 class="panel-title">Dados do Solicitante</h3>
+						</div>
+						<i class="fluigicon fluigicon-arrow-go-to-down icon-sm" aria-hidden="true"></i>
+						
+					</div>
+					<div class="panel-body" id="solic-content">
+						<div class="form-group col-md-12">
+							<div class="col-md-3">
+								<label for="txt_nome_solic">Nome</label>
+								<input type="text" name="txt_nome_solic" id="txt_nome_solic" class="form-control">
+							</div>
+							<div class="col-md-2">
+								<label for="txt_matricula_solic">Matricula</label>
+								<input type="text" name="txt_matricula_solic" id="txt_matricula_solic" class="form-control">
+							</div>
+							<div class="col-md-2">
+								<label for="txt_setor_solic">Setor</label>
+								<input type="text" name="txt_setor_solic" id="txt_setor_solic" class="form-control">
+							</div>
+							<div class="col-md-2">
+								<label for="txt_departamento_solic">Departamento</label>
+								<input type="text" name="txt_departamento_solic" id="txt_departamento_solic" class="form-control">
+							</div>
+							<div class="col-md-3">
+								<label for="txt_unidade_solic">Unidade</label>
+								<input type="text" name="txt_unidade_solic" id="txt_unidade_solic" class="form-control">
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="panel panel-default" id="detalhes-content">
+					<div class="panel-heading" id="detalhes-solic-heading">
+						<div class="panel-title">
+							<img src="img/DetalhesIcon.svg" alt="Icone da seção de Etapas" width="26px" height="26px">
+							<h3 class="panel-title">Detalhes da Solicitação</h3>
+						</div>
+						<i class="fluigicon fluigicon-arrow-go-to-down icon-sm" aria-hidden="true"></i>
+						
+					</div>
+					<div class="panel-body" id="detalhes-solic-content">
+						<div class="form-group col-md-12">
+							<div class="col-md-4">
+								<label for="txt_desc_solicitacao">Descrição das causas da solicitação da reversão</label>
+								<textarea name="txt_desc_solicitacao" id="txt_desc_solicitacao" cols="30" rows="5"  class="form-control"></textarea>
+							</div>
+							<div class="col-md-4">
+								<label for="txt_just_solicitacao">Justificativa do Responsável de Área</label>
+								<textarea name="txt_just_solicitacao" id="txt_just_solicitacao" cols="30" rows="5"  class="form-control"></textarea>
+							</div>
+							<div class="form-group col-md-4">
+								<label for="only-date">Data Reversão da Balança</label>
+								<div class="input-group date">
+									<input type="text" class="form-control" id="txt_datareversao_solicitacao" name="txt_datareversao_solicitacao">
+									<span class="input-group-addon">
+										<span class="fluigicon fluigicon-calendar"></span>
+									</span>
+								</div>
+								<input type="hidden" name="data_reversao_res" id="data_reversao_res">
+							</div>
+							
+						</div>
+					</div>
+					
+				</div>
+				<div class="panel panel-default" id="obs-content">
+					<div class="panel-heading" id="observacao-heading">
+						<div class="panel-title">
+							<img src="img/ObsIcon.svg" alt="Icone da seção de Etapas" width="26px" height="26px">
+							<h3 class="panel-title">Observações</h3>
+						</div>
+						<i class="fluigicon fluigicon-arrow-go-to-down icon-sm" aria-hidden="true"></i>
+						
+					</div>
+					<div class="panel-body" id="observacao-content">
+						<div class="form-group">
+							<textarea name="txt_observacoes_solic" id="txt_observacoes_solic" class="col-md-12 form-control" cols="30" rows="6"  placeholder="Observações*"></textarea>
+						</div>
+					</div>
+				</div>
+				<div class="panel panel-default" id="historico-content">
+					<div class="panel-heading">
+						<div class="panel-title">
+							<img src="img/ChatIcon.svg" alt="Icone da seção de Etapas" width="26px" height="26px">
+							<h3 class="panel-title">Histórico</h3>
+						</div>
+						
+					</div>
+					<div class="panel-body">
+						<table class="table table-hover col-md-12" id="tbChat" tablename="tbChat" noaddbutton="true" nodeletebutton="true">
+							<thead style="display: none">
+								<tr>
+									<th></th>
+									<th></th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr id="linhaChat" class="col-md-12">
+									<td class="col-md-1" class="colHist">
+										<div class="div-fotoUser">
+											<img src="" alt="Foto do Usuario" class="img-fotoChat" id="img_fotoChat">
+											<input type="hidden" name="srcFoto" id="srcFoto">
+										</div>
+										<div class="div_nomeUser">
+											<h4 class="titleName"></h4>
+											<input type="hidden" name="valueTitleNome" id="valueTitleNome">
+											<span class="roleName"></span>
+											<input type="hidden" name="valueSpanFuncao" id="valueSpanFuncao">
+										</div>
+									</td>
+									<td class="col-md-11">
+										<span class="data_hora"></span>
+										<textarea name="txt_chat" class="form-control" id="txt_chat" cols="30" rows="4" placeholder="Observações*"></textarea>
+										<input type="hidden" name="valueSpanDate" id="valueSpanDate">
+									</td>
+								</tr>
+							</tbody>
+						</table>
+						
+					</div>
+				</div>
+				<div class="panel panel-default" id="obs-aprovador-content">
+					<div class="panel-heading" id="observador-heading">
+						<div class="panel-title">
+							<img src="img/ObsIcon.svg" alt="Icone da seção de Etapas" width="26px" height="26px">
+							<h3 class="panel-title">Observações</h3>
+						</div>
+						<i class="fluigicon fluigicon-arrow-go-to-down icon-sm" aria-hidden="true"></i>
+						
+					</div>
+					<div class="panel-body" id="observador-content">
+						<div class="col-md-12" style="display: flex; align-items: center;">
+							<div class="aprovadorBtn col-md-3" style="display: flex; align-items: center; flex-direction: column;">
+								<p><strong>Aprovar Solicitação?</strong></p>
+								<div class="form-group" style="display: flex; gap: 20px;">
+									<button class="btn btn-success btn-lg" onclick="aprovacao('sim')">Aprovar</button>
+									<button class="btn btn-danger btn-lg" onclick="aprovacao('nao')">Reprovar</button>
+								</div>
+								<input type="hidden" name="aprovacao_1" id="aprovacao_1">
+								<input type="hidden" name="aprovacao_2" id="aprovacao_2">
+								<input type="hidden" name="aprovacao_3" id="aprovacao_3">
+								<input type="hidden" name="aprovacao_4" id="aprovacao_4">
+							</div>
+							<div class="form-group col-md-9">
+								<textarea name="txt_observacoes" id="txt_observacoes" class="col-md-12 form-control" cols="30" rows="6"  placeholder="Observações*"></textarea>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</form>
+</div>
+<script src="js/validate.js"></script>
+<script src="js/script.js"></script>
+
+</body>
+</html>

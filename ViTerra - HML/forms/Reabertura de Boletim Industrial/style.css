@@ -1,0 +1,45 @@
+.panel-heading{
+    border: 1px solid #0AAA64 !important;
+    border-radius: 8px !important;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between !important;
+    align-items: center !important;
+}
+
+.panel-title{
+    display: flex !important;
+    align-items: center !important;
+    gap: 20px;
+}
+
+.panel-title i{
+    font-size: 25px !important;
+    color: #000000 !important;
+}
+.panel-title h3{
+    font-size: 22px !important;
+    color: #0AAA64 !important;
+}
+.fluigicon-arrow-go-to-down{
+    font-size: 14px !important;
+    color: #CCCCCC !important;  
+}
+
+
+.div-fotoUser img{
+    border-radius: 50%;
+    width: 77px;
+    height: 77px;
+}
+
+.div_nomeUser{
+    font-size: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.div_nomeUser .roleName{
+    transform: translateY(-10px);
+}
